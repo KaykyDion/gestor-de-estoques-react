@@ -1,10 +1,12 @@
 import Button from "../../components/Button";
 import ItemInfoBox from "../../components/ItemInfoBox";
-import { HomeStyle, InfoBoxContainer, Table, TableContainer } from "./styles";
+import { Table } from "../../components/Table/styles";
+import { PageLayout } from "../../styles";
+import { InfoBoxContainer, TableContainer } from "./styles";
 
 export default function Home() {
   return (
-    <HomeStyle>
+    <PageLayout>
       <InfoBoxContainer>
         <ItemInfoBox title={"Diversidade de itens:"} amount="2" />
         <ItemInfoBox title={"Inventário total:"} amount="40" />
@@ -13,7 +15,7 @@ export default function Home() {
       </InfoBoxContainer>
 
       <TableContainer>
-        <Table cellSpacing={0}>
+        <Table>
           <thead>
             <tr>
               <th>
@@ -40,7 +42,7 @@ export default function Home() {
           </tbody>
         </Table>
 
-        <Table cellSpacing={0}>
+        <Table>
           <thead>
             <tr>
               <th>
@@ -72,6 +74,6 @@ export default function Home() {
           </tbody>
         </Table>
       </TableContainer>
-    </HomeStyle>
+    </PageLayout>
   );
 }

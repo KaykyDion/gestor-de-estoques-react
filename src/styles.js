@@ -7,16 +7,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Inter", sans-serif;
     list-style: none;
     text-decoration: none;
-    font-size: 18px;
-
-    @media (max-width: 768px) {
-      font-size: 16px;
-    }
   }
 
   body {
     background-color: #000;
-    color: #eee
+    color: #eee;
   }
 `;
 export default GlobalStyle;
@@ -29,5 +24,19 @@ export const Container = styled.div`
   @media (max-width: 1024px) {
     max-width: 90%;
     display: block;
+  }
+`;
+
+export const PageLayout = styled.div`
+  background-color: #363636;
+  padding: 30px;
+  border-radius: 8px;
+  h1 {
+    font-weight: normal;
+    font-size: 42px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
   }
 `;

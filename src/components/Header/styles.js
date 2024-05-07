@@ -6,12 +6,17 @@ export const HeaderStyle = styled.header`
   align-items: center;
   padding: 16px 0;
 
-  div {
+  nav {
     display: flex;
     gap: 20px;
+    align-items: center;
 
     a {
       color: #eee;
+    }
+
+    button {
+      font-size: 14px;
     }
   }
 `;
