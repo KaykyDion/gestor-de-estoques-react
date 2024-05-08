@@ -1,17 +1,31 @@
 import Button from "../../components/Button";
 import ItemInfoBox from "../../components/ItemInfoBox";
 import { Table } from "../../components/Table/styles";
+import useStockItems from "../../hooks/useStockItems";
 import { PageLayout } from "../../styles";
 import { InfoBoxContainer, TableContainer } from "./styles";
 
 export default function Home() {
+  const { stock, getItemsRunningLow, getRecentItems } = useStockItems();
+
   return (
     <PageLayout>
       <InfoBoxContainer>
-        <ItemInfoBox title={"Diversidade de itens:"} amount="2" />
-        <ItemInfoBox title={"Inventário total:"} amount="40" />
-        <ItemInfoBox title={"Itens recentes:"} amount="2" />
-        <ItemInfoBox title={"Itens acabando:"} amount="1" />
+        <ItemInfoBox title={"Diversidade de itens:"} amount={stock.length} />
+        <ItemInfoBox
+          title={"Inventário total:"}
+          amount={stock.reduce((acc, item) => {
+            return acc + +item.amount;
+          }, 0)}
+        />
+        <ItemInfoBox
+          title={"Itens recentes:"}
+          amount={getRecentItems().length}
+        />
+        <ItemInfoBox
+          title={"Itens acabando:"}
+          amount={getItemsRunningLow().length}
+        />
       </InfoBoxContainer>
 
       <TableContainer>
@@ -27,18 +41,16 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Cadeira</td>
-              <td>
-                <Button text={"Ver"} bgColor={"#eee"} />
-              </td>
-            </tr>
-            <tr>
-              <td>Cadeira</td>
-              <td>
-                <Button text={"Ver"} bgColor={"#eee"} />
-              </td>
-            </tr>
+            {getRecentItems().map((item) => {
+              return (
+                <tr key={item.id}>
+                  <td>{item.name}</td>
+                  <td>
+                    <Button text={"Ver"} />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
 
@@ -57,20 +69,17 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Cadeira</td>
-              <td>0</td>
-              <td>
-                <Button text={"Ver"} bgColor={"#eee"} />
-              </td>
-            </tr>
-            <tr>
-              <td>Cadeira</td>
-              <td>0</td>
-              <td>
-                <Button text={"Ver"} bgColor={"#eee"} />
-              </td>
-            </tr>
+            {getItemsRunningLow().map((item) => {
+              return (
+                <tr key={item.id}>
+                  <td>{item.name}</td>
+                  <td>{item.amount}</td>
+                  <td>
+                    <Button text={"Ver"} />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
       </TableContainer>

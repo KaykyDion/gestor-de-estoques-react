@@ -1,20 +1,69 @@
+import { useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import useStockItems from "../../hooks/useStockItems";
 import { PageLayout } from "../../styles";
 import { Form } from "./styles";
 
 export default function NewItemPage() {
+  const { addItem } = useStockItems();
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("não definida");
+  const [description, setDescription] = useState("");
+
+  function generateId() {
+    const characters =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234";
+
+    let randomId = "";
+
+    for (let i = 0; i < 6; i++) {
+      const randomNum = Math.floor(Math.random() * characters.length) + 1;
+      randomId += characters[randomNum];
+    }
+
+    return randomId;
+  }
+
+  function handleSubmit(ev) {
+    ev.preventDefault();
+    const id = generateId();
+    addItem({ id, name, amount, price, category, description });
+  }
+
   return (
     <PageLayout>
-      <Form action="">
+      <Form onSubmit={handleSubmit}>
         <div className="inputsContainer">
-          <Input labelText={"Nome:"} inputType={"text"} />
-          <Input labelText={"Quantidade:"} inputType={"number"} />
-          <Input labelText={"Preço:"} inputType={"number"} />
+          <Input
+            labelText={"Nome:"}
+            inputType={"text"}
+            value={name}
+            setValue={setName}
+          />
+          <Input
+            labelText={"Quantidade:"}
+            inputType={"number"}
+            value={amount}
+            setValue={setAmount}
+          />
+          <Input
+            labelText={"Preço:"}
+            inputType={"number"}
+            value={price}
+            setValue={setPrice}
+          />
           <div>
             <label htmlFor="categories">Categoria:</label>
-            <select required id="categories" defaultValue="default">
-              <option disabled value="default">
+            <select
+              required
+              id="categories"
+              defaultValue={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option disabled value="não definida">
                 Selecione uma categoria...
               </option>
               <option value="Livros">Livros</option>
@@ -25,7 +74,14 @@ export default function NewItemPage() {
 
         <div className="textAreaContainer">
           <label htmlFor="description">Descrição:</label>
-          <textarea required name="description" id="" rows="10"></textarea>
+          <textarea
+            required
+            name="description"
+            id=""
+            rows="10"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
         </div>
         <Button text="Salvar" bgColor="#5BA7FD" />
       </Form>
