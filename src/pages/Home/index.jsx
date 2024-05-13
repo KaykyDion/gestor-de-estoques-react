@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import ItemInfoBox from "../../components/ItemInfoBox";
 import { Table } from "../../components/Table/styles";
@@ -46,7 +47,9 @@ export default function Home() {
                 <tr key={item.id}>
                   <td>{item.name}</td>
                   <td>
-                    <Button text={"Ver"} />
+                    <Link to={`/${item.id}`}>
+                      <Button text={"Ver"} />
+                    </Link>
                   </td>
                 </tr>
               );
@@ -75,7 +78,9 @@ export default function Home() {
                   <td>{item.name}</td>
                   <td>{item.amount}</td>
                   <td>
-                    <Button text={"Ver"} />
+                    <Link to={`/${item.id}`}>
+                      <Button text={"Ver"} />
+                    </Link>
                   </td>
                 </tr>
               );

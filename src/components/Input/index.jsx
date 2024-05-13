@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import { InputContainer } from "./styles";
 
-// eslint-disable-next-line react/prop-types
 export default function Input({ labelText, inputType, value, setValue }) {
   return (
     <InputContainer>

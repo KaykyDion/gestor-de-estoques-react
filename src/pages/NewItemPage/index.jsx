@@ -76,8 +76,7 @@ export default function NewItemPage() {
           <label htmlFor="description">Descrição:</label>
           <textarea
             required
-            name="description"
-            id=""
+            id="description"
             rows="10"
             value={description}
             onChange={(e) => setDescription(e.target.value)}

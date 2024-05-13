@@ -3,6 +3,8 @@ import RootLayout from "./pages/RootLayout";
 import Home from "./pages/Home";
 import ItensList from "./pages/ItensList";
 import NewItemPage from "./pages/NewItemPage";
+import ItemPage from "./pages/ItemPage";
+import loadItem from "./loaders/items";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,11 @@ const router = createBrowserRouter([
       {
         path: "/novo-item",
         element: <NewItemPage />,
+      },
+      {
+        path: "/:itemId",
+        element: <ItemPage />,
+        loader: loadItem,
       },
     ],
   },

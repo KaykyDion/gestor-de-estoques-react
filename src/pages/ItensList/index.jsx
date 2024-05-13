@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import { Table } from "../../components/Table/styles";
 import useStockItems from "../../hooks/useStockItems";
@@ -28,7 +29,9 @@ export default function ItensList() {
                 <td>{amount}</td>
                 <td>{category}</td>
                 <td className="buttonContainer">
-                  <Button text={"Ver"} />
+                  <Link to={`/${id}`}>
+                    <Button text={"Ver"} />
+                  </Link>
                   <Button text={"Atualizar"} bgColor={"#5BA7FD"} />
                   <Button
                     handleClick={() => removeItem(id)}

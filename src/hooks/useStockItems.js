@@ -9,10 +9,21 @@ export default function useStockItems() {
     return stockArray;
   });
 
+  const [itemToView, setItemToView] = useState();
+
   function addItem({ id, name, amount, price, category, description }) {
     const timeInMs = new Date().getTime();
 
-    const item = { id, name, amount, price, category, description, timeInMs };
+    const item = {
+      id,
+      name,
+      amount,
+      price,
+      category,
+      description,
+      timeInMs,
+      date: new Date(),
+    };
     setStock((state) => {
       const newState = [...state, item];
       localStorage.setItem("stock-items", JSON.stringify(newState));
@@ -48,5 +59,20 @@ export default function useStockItems() {
     });
   }
 
-  return { stock, addItem, removeItem, getItemsRunningLow, getRecentItems };
+  function getItemToView(id) {
+    const item = stock.find((i) => i.id === id);
+    console.log(item);
+
+    return item ? setItemToView(item) : alert("Item não encontrado");
+  }
+
+  return {
+    stock,
+    addItem,
+    removeItem,
+    getItemsRunningLow,
+    getRecentItems,
+    itemToView,
+    getItemToView,
+  };
 }
