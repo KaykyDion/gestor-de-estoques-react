@@ -5,6 +5,7 @@ import ItensList from "./pages/ItensList";
 import NewItemPage from "./pages/NewItemPage";
 import ItemPage from "./pages/ItemPage";
 import loadItem from "./loaders/items";
+import UpdateItemPage from "./pages/UpdateItemPage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
       {
         path: "/:itemId",
         element: <ItemPage />,
+        loader: loadItem,
+      },
+      {
+        path: "/atualizar/:itemId",
+        element: <UpdateItemPage />,
         loader: loadItem,
       },
     ],

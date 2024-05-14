@@ -10,7 +10,7 @@ export default function ItemPage() {
   return (
     <PageLayout>
       <h1>{item.name}</h1>
-      <span style={{ color: "#a7a6a6" }}>(id: ${item.id})</span>
+      <span style={{ color: "#a7a6a6" }}>(id: {item.id})</span>
 
       <InfoContainer>
         <Info>Categoria: {item.category}</Info>
@@ -21,7 +21,9 @@ export default function ItemPage() {
       <Description>{item.description}</Description>
 
       <ButtonContainer>
-        <Button text="Atualizar" bgColor={"#5BA7FD"} />
+        <Link to={`/atualizar/${item.id}`}>
+          <Button text="Atualizar" bgColor={"#5BA7FD"} />
+        </Link>
         <Link to="/itens">
           <Button
             text="Excluir"
