@@ -18,7 +18,13 @@ export default function ItemPage() {
         <Info>Preço: R$ {item.price}</Info>
       </InfoContainer>
 
-      <Description>{item.description}</Description>
+      <p>{item.description}</p>
+      <InfoContainer>
+        <Description>Adicionado em: {item.date}</Description>
+        {item.updateDate ? (
+          <Description>Atualizado em: {item.updateDate}</Description>
+        ) : null}
+      </InfoContainer>
 
       <ButtonContainer>
         <Link to={`/atualizar/${item.id}`}>

@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { PageLayout } from "../../styles";
 import { Form } from "../../components/Form/styles";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useStockItems from "../../hooks/useStockItems";
 
 export default function UpdateItemPage() {
@@ -15,6 +15,7 @@ export default function UpdateItemPage() {
   const [price, setPrice] = useState(item.price);
   const [category, setCategory] = useState(item.category);
   const [description, setDescription] = useState(item.description);
+  let navigate = useNavigate();
 
   function handleSubmit(ev) {
     ev.preventDefault();
@@ -24,15 +25,17 @@ export default function UpdateItemPage() {
     item.price = price;
     item.category = category;
     item.description = description;
+    item.updateDate = new Date().toLocaleString();
 
     setStock((state) => {
       const index = state.findIndex((i) => i.id === item.id);
       state.splice(index, 1, item);
       localStorage.setItem("stock-items", JSON.stringify(state));
-      console.log(state);
 
       return state;
     });
+
+    navigate(-1);
   }
 
   return (

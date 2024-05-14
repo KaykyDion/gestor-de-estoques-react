@@ -4,6 +4,7 @@ import Input from "../../components/Input";
 import useStockItems from "../../hooks/useStockItems";
 import { PageLayout } from "../../styles";
 import { Form } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 export default function NewItemPage() {
   const { addItem } = useStockItems();
@@ -12,6 +13,7 @@ export default function NewItemPage() {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("não definida");
   const [description, setDescription] = useState("");
+  let navigate = useNavigate();
 
   function generateId() {
     const characters =
@@ -31,6 +33,7 @@ export default function NewItemPage() {
     ev.preventDefault();
     const id = generateId();
     addItem({ id, name, amount, price, category, description });
+    navigate(-1);
   }
 
   return (

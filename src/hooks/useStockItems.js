@@ -11,6 +11,7 @@ export default function useStockItems() {
 
   function addItem({ id, name, amount, price, category, description }) {
     const timeInMs = new Date().getTime();
+    const date = new Date().toLocaleString();
 
     const item = {
       id,
@@ -20,7 +21,7 @@ export default function useStockItems() {
       category,
       description,
       timeInMs,
-      date: new Date(),
+      date,
     };
     setStock((state) => {
       const newState = [...state, item];

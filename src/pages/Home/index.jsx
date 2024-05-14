@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-import Button from "../../components/Button";
 import ItemInfoBox from "../../components/ItemInfoBox";
-import { Table } from "../../components/Table/styles";
 import useStockItems from "../../hooks/useStockItems";
 import { PageLayout } from "../../styles";
 import { InfoBoxContainer, TableContainer } from "./styles";
+import RecentItems from "../../components/RecentItems";
+import ItemsRunningLow from "../../components/ItemsRunningLow";
 
 export default function Home() {
   const { stock, getItemsRunningLow, getRecentItems } = useStockItems();
@@ -30,63 +29,8 @@ export default function Home() {
       </InfoBoxContainer>
 
       <TableContainer>
-        <Table>
-          <thead>
-            <tr>
-              <th>
-                <h3>Itens Recentes</h3>
-              </th>
-              <th>
-                <h3>Ações</h3>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {getRecentItems().map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>
-                    <Link to={`/${item.id}`}>
-                      <Button text={"Ver"} />
-                    </Link>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-
-        <Table>
-          <thead>
-            <tr>
-              <th>
-                <h3>Itens Acabando</h3>
-              </th>
-              <th>
-                <h3>Qtd.</h3>
-              </th>
-              <th>
-                <h3>Ações</h3>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {getItemsRunningLow().map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>{item.amount}</td>
-                  <td>
-                    <Link to={`/${item.id}`}>
-                      <Button text={"Ver"} />
-                    </Link>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
+        <RecentItems />
+        <ItemsRunningLow />
       </TableContainer>
     </PageLayout>
   );

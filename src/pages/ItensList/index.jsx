@@ -32,7 +32,9 @@ export default function ItensList() {
                   <Link to={`/${id}`}>
                     <Button text={"Ver"} />
                   </Link>
-                  <Button text={"Atualizar"} bgColor={"#5BA7FD"} />
+                  <Link to={`/atualizar/${id}`}>
+                    <Button text="Atualizar" bgColor={"#5BA7FD"} />
+                  </Link>
                   <Button
                     handleClick={() => removeItem(id)}
                     text={"Excluir"}
