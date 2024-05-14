@@ -19,18 +19,24 @@ export default function RecentItems() {
         </tr>
       </thead>
       <tbody>
-        {getRecentItems().map((item) => {
-          return (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>
-                <Link to={`/${item.id}`}>
-                  <Button text={"Ver"} />
-                </Link>
-              </td>
-            </tr>
-          );
-        })}
+        {getRecentItems().length === 0 ? (
+          <tr>
+            <td style={{ color: "#a7a6a6" }}>Não há itens recentes</td>
+          </tr>
+        ) : (
+          getRecentItems().map((item) => {
+            return (
+              <tr key={item.id}>
+                <td>{item.name}</td>
+                <td>
+                  <Link to={`/${item.id}`}>
+                    <Button text={"Ver"} />
+                  </Link>
+                </td>
+              </tr>
+            );
+          })
+        )}
       </tbody>
     </Table>
   );

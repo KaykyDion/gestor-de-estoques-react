@@ -21,19 +21,25 @@ export default function ItemsRunningLow() {
         </tr>
       </thead>
       <tbody>
-        {getItemsRunningLow().map((item) => {
-          return (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.amount}</td>
-              <td>
-                <Link to={`/${item.id}`}>
-                  <Button text={"Ver"} />
-                </Link>
-              </td>
-            </tr>
-          );
-        })}
+        {getItemsRunningLow().length === 0 ? (
+          <tr>
+            <td style={{ color: "#a7a6a6" }}>Não há itens acabando</td>
+          </tr>
+        ) : (
+          getItemsRunningLow().map((item) => {
+            return (
+              <tr key={item.id}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+                <td>
+                  <Link to={`/${item.id}`}>
+                    <Button text={"Ver"} />
+                  </Link>
+                </td>
+              </tr>
+            );
+          })
+        )}
       </tbody>
     </Table>
   );

@@ -3,6 +3,7 @@ import Button from "../../components/Button";
 import { Table } from "../../components/Table/styles";
 import useStockItems from "../../hooks/useStockItems";
 import { PageLayout } from "../../styles";
+import NoProductsMessage from "../../components/NoProductsMessage";
 
 export default function ItensList() {
   const { stock, removeItem } = useStockItems();
@@ -10,42 +11,46 @@ export default function ItensList() {
   return (
     <PageLayout>
       <h1>Stock</h1>
-      <Table style={{ width: "100%" }}>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Em Estoque</th>
-            <th>Categoria</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stock.map(({ id, name, amount, category }) => {
-            return (
-              <tr key={id}>
-                <td>{id}</td>
-                <td>{name}</td>
-                <td>{amount}</td>
-                <td>{category}</td>
-                <td className="buttonContainer">
-                  <Link to={`/${id}`}>
-                    <Button text={"Ver"} />
-                  </Link>
-                  <Link to={`/atualizar/${id}`}>
-                    <Button text="Atualizar" bgColor={"#5BA7FD"} />
-                  </Link>
-                  <Button
-                    handleClick={() => removeItem(id)}
-                    text={"Excluir"}
-                    bgColor={"#FF5258"}
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
+      {stock.length === 0 ? (
+        <NoProductsMessage />
+      ) : (
+        <Table style={{ width: "100%" }}>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Em Estoque</th>
+              <th>Categoria</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {stock.map(({ id, name, amount, category }) => {
+              return (
+                <tr key={id}>
+                  <td>{id}</td>
+                  <td>{name}</td>
+                  <td>{amount}</td>
+                  <td>{category}</td>
+                  <td className="buttonContainer">
+                    <Link to={`/${id}`}>
+                      <Button text={"Ver"} />
+                    </Link>
+                    <Link to={`/atualizar/${id}`}>
+                      <Button text="Atualizar" bgColor={"#5BA7FD"} />
+                    </Link>
+                    <Button
+                      handleClick={() => removeItem(id)}
+                      text={"Excluir"}
+                      bgColor={"#FF5258"}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      )}
     </PageLayout>
   );
 }
