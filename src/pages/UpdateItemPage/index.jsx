@@ -40,6 +40,7 @@ export default function UpdateItemPage() {
 
   return (
     <PageLayout>
+      <h2 style={{ marginBottom: "20px" }}>Atualizar - {item.name}</h2>
       <Form onSubmit={handleSubmit}>
         <div className="inputsContainer">
           <Input

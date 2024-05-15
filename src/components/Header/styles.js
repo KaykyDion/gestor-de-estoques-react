@@ -6,10 +6,24 @@ export const HeaderStyle = styled.header`
   align-items: center;
   padding: 16px 0;
 
+  @media (max-width: 375px) {
+    align-items: start;
+  }
+
   nav {
     display: flex;
-    gap: 20px;
     align-items: center;
+
+    ul {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+
+      @media (max-width: 375px) {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
 
     a {
       color: #eee;

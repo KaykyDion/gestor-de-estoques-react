@@ -25,6 +25,11 @@ export const Container = styled.div`
     max-width: 90%;
     display: block;
   }
+
+  @media (max-width: 768px) {
+    padding: 5px;
+    max-width: 95%;
+  }
 `;
 
 export const PageLayout = styled.div`

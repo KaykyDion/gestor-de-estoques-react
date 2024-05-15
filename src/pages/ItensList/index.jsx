@@ -4,6 +4,7 @@ import { Table } from "../../components/Table/styles";
 import useStockItems from "../../hooks/useStockItems";
 import { PageLayout } from "../../styles";
 import NoProductsMessage from "../../components/NoProductsMessage";
+import Modal from "../../components/Modal";
 
 export default function ItensList() {
   const { stock, removeItem } = useStockItems();
@@ -17,10 +18,10 @@ export default function ItensList() {
         <Table style={{ width: "100%" }}>
           <thead>
             <tr>
-              <th>ID</th>
+              <th className="thId">ID</th>
               <th>Nome</th>
               <th>Em Estoque</th>
-              <th>Categoria</th>
+              <th className="thCategory">Categoria</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -28,22 +29,37 @@ export default function ItensList() {
             {stock.map(({ id, name, amount, category }) => {
               return (
                 <tr key={id}>
-                  <td>{id}</td>
+                  <td className="tdId">{id}</td>
                   <td>{name}</td>
                   <td>{amount}</td>
-                  <td>{category}</td>
-                  <td className="buttonContainer">
-                    <Link to={`/${id}`}>
-                      <Button text={"Ver"} />
-                    </Link>
-                    <Link to={`/atualizar/${id}`}>
-                      <Button text="Atualizar" bgColor={"#5BA7FD"} />
-                    </Link>
-                    <Button
-                      handleClick={() => removeItem(id)}
-                      text={"Excluir"}
-                      bgColor={"#FF5258"}
-                    />
+                  <td className="tdCategory">{category}</td>
+                  <td>
+                    <div className="buttonContainer">
+                      <Link to={`/${id}`}>
+                        <Button text={"Ver"} />
+                      </Link>
+                      <Link to={`/atualizar/${id}`}>
+                        <Button text="Atualizar" bgColor={"#5BA7FD"} />
+                      </Link>
+                      <Button
+                        handleClick={() => removeItem(id)}
+                        text={"Excluir"}
+                        bgColor={"#FF5258"}
+                      />
+                    </div>
+                    <Modal>
+                      <Link to={`/${id}`}>
+                        <Button text={"Ver"} />
+                      </Link>
+                      <Link to={`/atualizar/${id}`}>
+                        <Button text="Atualizar" bgColor={"#5BA7FD"} />
+                      </Link>
+                      <Button
+                        handleClick={() => removeItem(id)}
+                        text={"Excluir"}
+                        bgColor={"#FF5258"}
+                      />
+                    </Modal>
                   </td>
                 </tr>
               );

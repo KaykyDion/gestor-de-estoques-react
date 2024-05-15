@@ -22,6 +22,20 @@ export const Table = styled.table`
     }
   }
 
+  .thId,
+  .tdId {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .thCategory,
+  .tdCategory {
+    @media (max-width: 350px) {
+      display: none;
+    }
+  }
+
   .buttonContainer {
     display: flex;
     flex-wrap: wrap;
