@@ -1,4 +1,4 @@
-import { Table } from "../Table/styles";
+import { Table } from "../TableStyles/styles";
 import useStockItems from "../../hooks/useStockItems";
 import { Link } from "react-router-dom";
 import Button from "../Button";

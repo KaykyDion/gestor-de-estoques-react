@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const ModalStyle = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
   .overlay {
     width: 100vw;
     height: 100vh;

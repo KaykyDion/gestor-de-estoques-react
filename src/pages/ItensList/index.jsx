@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
-import { Table } from "../../components/Table/styles";
+import { Table } from "../../components/TableStyles/styles";
 import useStockItems from "../../hooks/useStockItems";
 import { PageLayout } from "../../styles";
 import NoProductsMessage from "../../components/NoProductsMessage";
