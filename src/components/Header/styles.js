@@ -6,6 +6,10 @@ export const HeaderStyle = styled.header`
   align-items: center;
   padding: 16px 0;
 
+  a {
+    color: #eee;
+  }
+
   @media (max-width: 375px) {
     align-items: start;
   }
@@ -23,10 +27,6 @@ export const HeaderStyle = styled.header`
         flex-direction: column;
         gap: 10px;
       }
-    }
-
-    a {
-      color: #eee;
     }
 
     button {

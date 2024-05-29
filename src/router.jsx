@@ -6,6 +6,7 @@ import NewItemPage from "./pages/NewItemPage";
 import ItemPage from "./pages/ItemPage";
 import loadItem from "./loaders/items";
 import UpdateItemPage from "./pages/UpdateItemPage";
+import ItemBoundary from "./error-boundaries/ItemBoundary";
 
 const router = createBrowserRouter([
   {
@@ -29,11 +30,13 @@ const router = createBrowserRouter([
         path: "/:itemId",
         element: <ItemPage />,
         loader: loadItem,
+        errorElement: <ItemBoundary />,
       },
       {
         path: "/atualizar/:itemId",
         element: <UpdateItemPage />,
         loader: loadItem,
+        errorElement: <ItemBoundary />,
       },
     ],
   },

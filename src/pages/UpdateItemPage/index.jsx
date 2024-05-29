@@ -74,6 +74,8 @@ export default function UpdateItemPage() {
               </option>
               <option value="Livros">Livros</option>
               <option value="Jogos">Jogos</option>
+              <option value="Eletrônicos">Eletrônicos</option>
+              <option value="Brinquedos">Brinquedos</option>
             </select>
           </div>
         </div>

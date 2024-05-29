@@ -5,7 +5,9 @@ import Button from "../Button";
 export default function Header() {
   return (
     <HeaderStyle>
-      <h2>DevStock</h2>
+      <Link to={"/"}>
+        <h2>DevStock</h2>
+      </Link>
 
       <nav>
         <ul>
