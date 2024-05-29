@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { PageLayout } from "../../styles";
 import { Form } from "../../components/Form/styles";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useStockItems from "../../hooks/useStockItems";
+import VMasker from "vanilla-masker";
 
 export default function UpdateItemPage() {
   const item = useLoaderData();
@@ -16,6 +17,10 @@ export default function UpdateItemPage() {
   const [category, setCategory] = useState(item.category);
   const [description, setDescription] = useState(item.description);
   let navigate = useNavigate();
+
+  useEffect(() => {
+    setPrice(VMasker.toMoney(price));
+  }, [price]);
 
   function handleSubmit(ev) {
     ev.preventDefault();
@@ -57,7 +62,7 @@ export default function UpdateItemPage() {
           />
           <Input
             labelText={"Preço:"}
-            inputType={"number"}
+            inputType={"text"}
             value={price}
             setValue={setPrice}
           />
