@@ -1,8 +1,12 @@
 import { useState } from "react";
 import Button from "../Button";
 import { ModalStyle } from "./styles";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
+Modal.propTypes = {
+  children: PropTypes.node,
+};
+
 export default function Modal({ children }) {
   const [modal, setModal] = useState(false);
 

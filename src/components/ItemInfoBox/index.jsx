@@ -1,6 +1,11 @@
 import { InfoBox } from "./styles";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
+ItemInfoBox.propTypes = {
+  title: PropTypes.string,
+  amount: PropTypes.number,
+};
+
 export default function ItemInfoBox({ title, amount }) {
   return (
     <InfoBox>

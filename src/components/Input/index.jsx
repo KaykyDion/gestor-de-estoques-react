@@ -1,5 +1,12 @@
-/* eslint-disable react/prop-types */
 import { InputContainer } from "./styles";
+import PropTypes from "prop-types";
+
+Input.propTypes = {
+  labelText: PropTypes.string,
+  inputType: PropTypes.string,
+  value: PropTypes.string,
+  setValue: PropTypes.func,
+};
 
 export default function Input({ labelText, inputType, value, setValue }) {
   return (
