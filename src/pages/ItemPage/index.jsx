@@ -27,7 +27,7 @@ export default function ItemPage() {
       </InfoContainer>
 
       <ButtonContainer>
-        <Link to={`/atualizar/${item.id}`}>
+        <Link to={`/${item.id}/atualizar`}>
           <Button text="Atualizar" bgColor={"#5BA7FD"} />
         </Link>
         <Link to="/itens">

@@ -38,7 +38,7 @@ export default function ItensList() {
                       <Link to={`/${id}`}>
                         <Button text={"Ver"} />
                       </Link>
-                      <Link to={`/atualizar/${id}`}>
+                      <Link to={`/${id}/atualizar`}>
                         <Button text="Atualizar" bgColor={"#5BA7FD"} />
                       </Link>
                       <Button

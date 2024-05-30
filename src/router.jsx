@@ -14,7 +14,6 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: "/",
         element: <Home />,
         index: true,
       },
@@ -33,7 +32,7 @@ const router = createBrowserRouter([
         errorElement: <ItemBoundary />,
       },
       {
-        path: "/atualizar/:itemId",
+        path: "/:itemId/atualizar",
         element: <UpdateItemPage />,
         loader: loadItem,
         errorElement: <ItemBoundary />,
