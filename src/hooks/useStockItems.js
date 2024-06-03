@@ -32,10 +32,19 @@ export default function useStockItems() {
 
   function removeItem(id) {
     setStock((state) => {
-      const newState = state.filter((item) => item.id !== id);
-      localStorage.setItem("stock-items", JSON.stringify(newState));
+      const itemToRemove = state.find((item) => item.id === id);
+      const confirmation = confirm(
+        `Tem certeza que deseja remover ${itemToRemove.name} ?`
+      );
 
-      return newState;
+      if (confirmation) {
+        const newState = state.filter((item) => item.id !== id);
+        localStorage.setItem("stock-items", JSON.stringify(newState));
+
+        return newState;
+      } else {
+        return state;
+      }
     });
   }
 
