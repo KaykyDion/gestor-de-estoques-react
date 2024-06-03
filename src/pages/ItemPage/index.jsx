@@ -30,13 +30,11 @@ export default function ItemPage() {
         <Link to={`/${item.id}/atualizar`}>
           <Button text="Atualizar" bgColor={"#5BA7FD"} />
         </Link>
-        <Link to="/itens">
-          <Button
-            text="Excluir"
-            handleClick={() => removeItem(item.id)}
-            bgColor={"#FF5258"}
-          />
-        </Link>
+        <Button
+          text="Excluir"
+          handleClick={() => removeItem(item.id)}
+          bgColor={"#FF5258"}
+        />
       </ButtonContainer>
     </PageLayout>
   );

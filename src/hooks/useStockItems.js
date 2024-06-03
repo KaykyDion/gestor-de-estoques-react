@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function useStockItems() {
   const [stock, setStock] = useState(() => {
@@ -8,6 +9,7 @@ export default function useStockItems() {
     const stockArray = JSON.parse(stockItems);
     return stockArray;
   });
+  let navigate = useNavigate();
 
   function addItem({ id, name, amount, price, category, description }) {
     const timeInMs = new Date().getTime();
@@ -40,6 +42,7 @@ export default function useStockItems() {
       if (confirmation) {
         const newState = state.filter((item) => item.id !== id);
         localStorage.setItem("stock-items", JSON.stringify(newState));
+        navigate("/itens");
 
         return newState;
       } else {
